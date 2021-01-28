@@ -3,6 +3,8 @@ package jvm.clone;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang.SerializationUtils;
 
+import java.util.List;
+
 /**
  * -Xlog[:[selector][:[output][:[decorators][:output-options]]]]
  *
