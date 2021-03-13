@@ -1,6 +1,6 @@
 >原文链接 http://zh.lucida.me/blog/java-8-lambdas-insideout-language-features/
 
-####1.Lambda使用的背景
+#### 1.Lambda使用的背景
 
 java8之前通过匿名内部类来进行回调模式和函数式风格编程，匿名内部类会存在以下问题：
 
@@ -55,7 +55,7 @@ lambda 表达式的语法由参数列表、箭头符号 -> 和函数体组成。
 (String s) -> { System.out.println(s); }
 ```
 
-####4. 目标类型（Target typing）和上下文
+#### 4. 目标类型（Target typing）和上下文
 
 需要注意的是，函数式接口的名称并不是 lambda 表达式的一部分。那么问题来了，
 对于给定的 lambda 表达式，它的类型是什么？答案是：它的类型是由其上下文推导而来
@@ -104,7 +104,7 @@ Arrays.stream(names).<Person>map(s -> new Person(s));
 Object o = (Runnable) () -> { System.out.println("hi"); };
 ```
 
-####6. 词法作用域（Lexical scoping）
+#### 6. 词法作用域（Lexical scoping）
 lambda表达式函数体中引用外部变量和它在外部具体具有相同的语义。
 
 - this关键词，lambda内部的this就是外部的this。与其相比较的内部类的this就不是外部的this。
@@ -145,7 +145,7 @@ public class LambdaExample {
 Java7编译器对内部类引用外部变量（即捕获变量）要求非常严格，必须声明为final。
 Java8放宽了限制，内部类和lambda表达式允许引用有效只读变量。
 
-#####lambda 表达式对值封闭，变量开放, 
+##### lambda 表达式对值封闭，变量开放, 
 ```
 int sum = 0;
 list.forEach(e -> { sum += e.size(); }); // Illegal, close over values
