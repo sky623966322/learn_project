@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!--
+
+    1.
+    xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    定义了命名空间http://www.w3.org/2001/XMLSchema，别名为xsd
+    xsd:schema表示是此命名空间的schema
+
+    2.
+    targetNamespace="http://www.learn-projct.com/springtest"
+    targetNamespace声明了在该xsd文档下定义的元素属于该命名空间。
+
+    3.xmlns="http://www.learn-projct.com/springtest"
+    xmlns的作用仅仅是指定默认命名空间
+
+    4.
+    为什么targetNamespace与xmlns是相同的呢？
+    xmlns为默认的命名空间，与targetNamespace相同也就是认为http://www.learn-projct.com/springtest是默认的命名空间。
+    例如下例中， <xsd:attribute name="address" type="address"/>, type="address"，会从当前的文件找address。
+
+    如果xmlns="http://www.learn-projct.com/user2" 那么需要额外指定xmlns:user="http://www.learn-projct.com/user",
+    <xsd:attribute name="address" type="user:address"/>需要带上别名
+
+-->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://www.learn-projct.com/schema/user"
+            xmlns="http://www.learn-projct.com/schema/user"
+            elementFormDefault="qualified">
+    <xsd:element name="user">
+        <xsd:complexType>
+            <xsd:attribute name="id" type="xsd:string"/>
+            <xsd:attribute name="userName" type="xsd:string"/>
+            <xsd:attribute name="email" type="xsd:string"/>
+            <!--<xsd:attribute name="address" type="address"/>-->
+        </xsd:complexType>
+    </xsd:element>
+
+    <!--<xsd:complexType name="address">
+        <xsd:attribute name="contry" type="xsd:string"/>
+        <xsd:attribute name="province" type="xsd:string"/>
+        <xsd:attribute name="city" type="xsd:string"/>
+    </xsd:complexType>-->
+
+</xsd:schema>

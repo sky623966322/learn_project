@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>org.springframework.beans.factory.config.BeanDefinition</OriginalElement>
+  <nodes>
+    <node x="251.0" y="208.0">org.springframework.beans.factory.support.RootBeanDefinition</node>
+    <node x="475.0" y="208.0">org.springframework.beans.factory.support.ChildBeanDefinition</node>
+    <node x="268.0" y="0.0">org.springframework.beans.factory.config.BeanDefinition</node>
+    <node x="233.5" y="104.0">org.springframework.beans.factory.support.AbstractBeanDefinition</node>
+    <node x="0.0" y="208.0">org.springframework.beans.factory.support.GenericBeanDefinition</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="org.springframework.beans.factory.support.ChildBeanDefinition" target="org.springframework.beans.factory.support.AbstractBeanDefinition">
+      <point x="0.0" y="-27.0" />
+      <point x="581.5" y="183.0" />
+      <point x="432.6666666666667" y="183.0" />
+      <point x="79.66666666666669" y="27.0" />
+    </edge>
+    <edge source="org.springframework.beans.factory.support.AbstractBeanDefinition" target="org.springframework.beans.factory.config.BeanDefinition">
+      <point x="0.0" y="-27.0" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="org.springframework.beans.factory.support.GenericBeanDefinition" target="org.springframework.beans.factory.support.AbstractBeanDefinition">
+      <point x="0.0" y="-27.0" />
+      <point x="115.5" y="183.0" />
+      <point x="273.3333333333333" y="183.0" />
+      <point x="-79.66666666666669" y="27.0" />
+    </edge>
+    <edge source="org.springframework.beans.factory.support.RootBeanDefinition" target="org.springframework.beans.factory.support.AbstractBeanDefinition">
+      <point x="0.0" y="-27.0" />
+      <point x="0.0" y="27.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="344.0" y="131.0" />
+  <SelectedNodes>
+    <node>org.springframework.beans.factory.support.RootBeanDefinition</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
