@@ -7,7 +7,7 @@ import org.w3c.dom.Element;
 import spring.bean.User;
 
 /**
- * 解析xsd
+ * 解析自定义xsd
  */
 public class UserBeanDefinitionParser extends AbstractSingleBeanDefinitionParser {
     @Override
