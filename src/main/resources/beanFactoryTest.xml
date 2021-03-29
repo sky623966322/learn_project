@@ -4,9 +4,10 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="myTestBean" class="spring.bean.MyTestBean" init-method="init">
+    <bean id="myTestBean" class="spring.bean.MyTestBean" init-method="init" factory-method="">
 
     </bean>
+    <alias name="myTestBean" alias="myTestBean2"/>
 
 
 
