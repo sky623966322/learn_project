@@ -4,11 +4,14 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="myTestBean" class="spring.bean.MyTestBean" init-method="init" factory-method="">
-
+    <bean id="myTestBean" class="spring.bean.MyTestBean">
     </bean>
     <alias name="myTestBean" alias="myTestBean2"/>
 
+
+    <bean id="car" class="spring.bean.CarFactoryBean">
+        <constructor-arg name="carInfo" value="200,Honda,2000000"></constructor-arg>
+    </bean>
 
 
 </beans>

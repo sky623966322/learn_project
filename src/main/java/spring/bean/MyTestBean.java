@@ -14,19 +14,6 @@ public class MyTestBean {
         return testStr;
     }
 
-    public void init(){
-        ClassPathResource classPathResource = new ClassPathResource("README1.md");
-
-        try {
-            File file = classPathResource.getFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        /*FileUtils.copyFile(file, )
-        classPathResource.*/
-    }
-
-
     public void setTestStr(String testStr) {
         this.testStr = testStr;
     }
