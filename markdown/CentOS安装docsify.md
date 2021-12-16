@@ -2,6 +2,8 @@
 
 方式一：
 
+> 访问 https://nodejs.org/en/download/ 找到最新版本的链接
+
 ```
 cd /usr/local/src/
 sudo wget https://nodejs.org/dist/v16.13.1/node-v16.13.1-linux-x64.tar.xz
