@@ -1,14 +1,4 @@
-#### 1.CentOS 先安装EPEL 
-
-> EPEL (Extra Packages for Enterprise [Linux](https://so.csdn.net/so/search?from=pc_blog_highlight&q=Linux))是基于Fedora的一个项目，为“红帽系”的操作系统提供额外的软件包，适用于RHEL、CentOS和Scientific Linux.
->
-
-```
-sudo yum -y install epel-release
-yum repolist //查看仓库
-```
-
-#### 2. 安装nodejs
+#### 1. 安装nodejs
 
 方式一：
 
@@ -35,14 +25,14 @@ npm -v
 > epel仓库nodejs版本太老，会导致docsify启动失败
 
 ```
-sudo yum -y install epel-release //安装epel仓库
+sudo yum -y install epel-release //为CentOS安装epel仓库
 yum repolist //查看仓库
 sudo yum install nodejs
 node -v
 npm -v
 ```
 
-#### 3. 安装docsify-cli工具
+#### 2. 安装docsify-cli工具
 
 > 参考 https://docsify.js.org/#/zh-cn/quickstart
 
@@ -51,11 +41,17 @@ npm -v
 sudo npm i docsify-cli -g
 ```
 
-#### 4.初始化项目
+#### 3.初始化项目
 
 ```
 mkdir docs
 docsify init docs
 docsify serve docs //启动
+```
+
+4.访问网页
+
+```
+http://localhost:3000
 ```
 
