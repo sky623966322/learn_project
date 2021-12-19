@@ -60,6 +60,6 @@ cp CentOS安装docsify.md docs/
 
 ```
 localhost:3000 //默认访问docs/README.md
-http://localhost:3000/#/CentOS安装docsify  //访问你放进去的md文件
+http://localhost:3000/#/CentOS安装docsify  //访问你放进docs目录的md文件
 ```
 
