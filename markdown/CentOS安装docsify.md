@@ -46,14 +46,20 @@ sudo npm i docsify-cli -g
 #### 3.初始化项目
 
 ```
-mkdir docs
-docsify init docs
+docsify init docs //docs为要初始化的目录 
 docsify serve docs //启动
 ```
 
-4.访问网页
+#### 4.复制md
 
 ```
-http://localhost:3000
+cp CentOS安装docsify.md docs/
+```
+
+#### 5.访问网页
+
+```
+localhost:3000 //默认访问docs/README.md
+http://localhost:3000/#/CentOS安装docsify  //访问你放进去的md文件
 ```
 
