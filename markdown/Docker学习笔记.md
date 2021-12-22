@@ -120,12 +120,16 @@ docker rmi ba6acccedd29
 - ##### 导出镜像
 
 ```
-docker save -o ubuntu_18.04.tar ubuntu:18.04
+docker save -o ubuntu_18.04_image1 ubuntu:18.04
+或
+docker save ubuntu:18.04 > ubuntu_18.04_image2.tar
 ```
 
 - ##### 导入镜像
 
 ```
+docker load -i ubuntu_18.04.tar
+或
 docker load < ubuntu_18.04.tar
 // 删除原有镜像，重新导入，新导入的image id与原来的一样
 ```
@@ -156,11 +160,13 @@ docker push sky623966322/helloword:1.0
 - 新建并启动容器（相当于上面三步）
 
   ```
-  docker run -it ubuntu:18.04 /bin/bash
+  docker run -it ubuntu:18.04 /bin/bash //启动并启动bash终端
+  docker run -it -d ubuntu:latest //启动后台运行
   
   run命令，如果本地没有镜像，会从公共仓库下载。执行用户指定的应用程序；
   -t 让docker分配一个伪终端并绑定到容器的标准输入上，-i则让容器的标准输入保持打开， /bin/bash启动bash终端。
-  exit 退出容器
+  -d 后台运行
+  exit //退出容器
   ```
 
 - 守护态运行
@@ -181,10 +187,44 @@ docker push sky623966322/helloword:1.0
 - 终止容器
 
   ```
-  docker stop [-t|--time[=10]] xxx
+  docker stop xxx
   docker start xxx
   docker restart xxx
   ```
 
+
+- 进入容器
+
+  ```
+  docker exec -it 358853f0a7bb bash
+  ```
+
+- 删除容器
+
+  ```
+  docker rm [-f] 358853f0a7bb
+  -f 表示强制删除
+  ```
+
+##### 导入和导出容器
+
+- 导出容器
+
+  ```
+  docker export -o ubuntu_latest_container1.tar d09841ea1e8c
+  或
+  docker export d09841ea1e8c > ubuntu_latest_container2.tar
+  ```
+
+- 导入容器
+
+  ```
+  docker import ubuntu_latest_container1.tar test/ubuntu:v1.0
   
+  [bigtotoro@bigtotoro ~]$ docker images
+  REPOSITORY               TAG       IMAGE ID       CREATED         SIZE
+  test/ubuntu              v1.0      4d004593f939   6 seconds ago   72.8MB
+  ```
+
+  > 用户既可以使用 docker load 来导入镜像存储文件到本地镜像库，也可以使用 docker import 来导入一个容器快照到本地镜像库。这两者的区别在于容器快照文件将丢弃所有的历史记录和元数据信息（即仅保存容器当时的快照状态），而镜像存储文件将保存完整记录，体积也要大。此外，从容器快照文件导入时可以重新指定标签等元数据信息。
 
