@@ -88,19 +88,19 @@ COPY hello.txt . 表示将docker/hello.txt复制到容器的当前目录, 也就
 
 ### 6.docker 镜像命令
 
-- ##### 从docker hub中获取镜像, 不带版本号就是latest
+- 从docker hub中获取镜像, 不带版本号就是latest
 
 ```
 docker pull ubuntu:18.04
 ```
 
-- ##### 查看镜像
+- 查看镜像
 
 ```
 docker images
 ```
 
-- ##### 为本地镜像添加tag标签
+- 为本地镜像添加tag标签
 
 ```
 docker tag ubuntu:latest myubuntu:latest
@@ -108,7 +108,7 @@ docker tag ubuntu:latest myubuntu:latest
 加的标签实际上起到了类似链接的作用
 ```
 
-- ##### 使用标签删除镜像
+- 使用标签删除镜像
 
 ```
 docker rmi myubuntu:latest
@@ -117,7 +117,7 @@ docker rmi ba6acccedd29
 //ba6acccedd29是镜像id，与使用标签删除镜像不同的时，如果有多个标签指向这个镜像id，那么会删除失败，可以使用 -f 强制删除，但是不推荐
 ```
 
-- ##### 导出镜像
+- 导出镜像
 
 ```
 docker save -o ubuntu_18.04_image1 ubuntu:18.04
@@ -125,7 +125,7 @@ docker save -o ubuntu_18.04_image1 ubuntu:18.04
 docker save ubuntu:18.04 > ubuntu_18.04_image2.tar
 ```
 
-- ##### 导入镜像
+- 导入镜像
 
 ```
 docker load -i ubuntu_18.04.tar
@@ -134,7 +134,7 @@ docker load < ubuntu_18.04.tar
 // 删除原有镜像，重新导入，新导入的image id与原来的一样
 ```
 
-- ##### 上传镜像
+- 上传镜像
 
 ```
 docker login //先登录docker
@@ -142,9 +142,9 @@ docker tag helloworld:1.0 ${user}/helloword:1.0 //为本地镜像打上带docker
 docker push sky623966322/helloword:1.0
 ```
 
-7.docker 容器命令
+### 7.docker 容器命令
 
-##### 创建容器
+#### 创建容器
 
 - 创建容器
 
@@ -175,7 +175,7 @@ docker push sky623966322/helloword:1.0
   docker run -d ubuntu:latest /bin/sh -c "while true;do echo hello world; sleep 1; done"
   ```
 
-##### 停止容器
+#### 停止容器
 
 - 暂停容器
 
@@ -228,3 +228,154 @@ docker push sky623966322/helloword:1.0
 
   > 用户既可以使用 docker load 来导入镜像存储文件到本地镜像库，也可以使用 docker import 来导入一个容器快照到本地镜像库。这两者的区别在于容器快照文件将丢弃所有的历史记录和元数据信息（即仅保存容器当时的快照状态），而镜像存储文件将保存完整记录，体积也要大。此外，从容器快照文件导入时可以重新指定标签等元数据信息。
 
+#### 查看容器
+
+- 查看容器详情
+
+  ```
+  docker inspect d09841ea1e8c
+  [
+      {
+          "Id": "d09841ea1e8c920b801f27ca4e1e64b4baa1eae30c23e0753ffa9e7c388dd598",
+          "Created": "2021-12-22T14:54:35.113064643Z",
+          "Path": "bash",
+          "Args": [],
+          "State": {
+              "Status": "running",
+              "Running": true,
+              "Paused": false,
+              "Restarting": false,
+  ...
+  ]
+  ```
+
+- 查看容器内进程
+
+  ```
+  docker top d09841ea1e8c
+  
+  bigtotoro@bigtotoro ~]$ docker top d09841ea1e8c
+  UID                 PID                 PPID                C                   STIME               TTY                 TIME                CMD
+  root                36290               36270               0                   08:29               ?                   00:00:00            bash
+  
+  ```
+
+- 查看统计信息
+
+  ```
+  docker stats d09841ea1e8c
+  
+  CONTAINER ID   NAME           CPU %     MEM USAGE / LIMIT   MEM %     NET I/O       BLOCK I/O   PIDS
+  d09841ea1e8c   nifty_euclid   0.00%     536KiB / 3.682GiB   0.01%     1.19kB / 0B   0B / 0B     1
+  ```
+
+#### 其他容器命令
+
+- 复制文件
+
+  ```
+  docker cp docs d09841ea1e8c:/tmp   //cp 命名可以将主机文件复制到容器内部
+  docker exec -it d09841ea1e8c bash  //进入容器内部
+  ll /tmp //查看复制进来的文件 
+  ```
+
+- 查看容器变更记录
+
+  ```
+  docker diff d09841ea1e8c
+  
+  bigtotoro@bigtotoro ~]$ docker diff d09841ea1e8c
+  C /root
+  A /root/.bash_history
+  C /tmp
+  A /tmp/docs
+  A /tmp/docs/.nojekyll
+  A /tmp/docs/CentOS安装docsify.md
+  A /tmp/docs/README.md
+  A /tmp/docs/index.html
+  ```
+
+- 查看端口映射
+
+  ```
+  docker pull nginx:latest //拉取nginx镜像
+  docker run -it -d -p 8088:80 nginx:latest //将主机8088映射到容器80端口，并后台启动
+  docker port 2555c5251dd1
+  
+  [bigtotoro@bigtotoro ~]$ docker port 2555c5251dd1
+  80/tcp -> 0.0.0.0:8088
+  80/tcp -> :::8088
+  ```
+
+### docker 镜像仓库
+
+- docker镜像仓库分为公共镜像仓库，例如docker hub，还有华为云、阿里云等第三方镜像仓库；
+- 可以使用registry镜像搭建私有镜像仓库；
+
+### docker卷与持久化
+
+> 卷 - volume ，对应的是主机的一个目录，可以将卷挂载到容器的目录。
+>
+> - 卷可以被容器共享；
+> - 对卷内的数据修改，主机和容器立即生效；
+
+- 创建卷
+
+  ```
+  docker volume create [local] myvol //local表示使用内置的local驱动，可以省略。本地卷只能被所在的节点容器使用
+  docker volume ls //查看卷列表
+  docker volume inspect myvol //查看卷
+  
+  [bigtotoro@bigtotoro ~]$ docker volume inspect myvol
+  [
+      {
+          "CreatedAt": "2021-12-25T22:08:03+08:00",
+          "Driver": "local",
+          "Labels": {},
+          "Mountpoint": "/var/lib/docker/volumes/myvol/_data",
+          "Name": "myvol",
+          "Options": {},
+          "Scope": "local"
+      }
+  ]
+  Mountpoint 表示卷位于主机的具体目录。/var/lib/docker/volumes为local驱动默认目录。
+  ```
+
+- 删除卷
+
+  ```
+  docker volume rm myvol
+  ```
+
+- 挂载卷
+
+  ```
+  docker run -it -d --name voltainer --mount source=bizvol,target=/vol alpine:latest
+  
+  解释：
+  --mount 表示将创建bizvol卷；
+  创建alpine:latest镜像所新创建的名为 voltainer 容器；
+  并将 bizvol 卷挂载到 voltainer 容器的/vol目录；
+  
+  # 进入容器
+  docker exec -it voltainer sh
+  
+  # 写入文件
+  echo "test" >>  /vol/file1
+  
+  # exit退出容器后查看主机文件
+  sudo cat /var/lib/docker/volumes/bizvol/_data/file1
+  
+  # 删除容器，并查看 bizvol 卷是否存在
+  docker rm -f voltainer
+  docker volume ls
+  
+  # 创建新容器，将已创建的 bizvol 卷挂载
+  docker run -it -d --name hellocat --mount source=bizvol,target=/vol alpine:latest
+  
+  # 进入新容器，查看卷数据是否已经挂载
+  docker exec -it hellocat sh
+  ls /vol
+  ```
+
+  
