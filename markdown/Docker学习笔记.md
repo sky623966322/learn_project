@@ -97,7 +97,8 @@ docker pull ubuntu:18.04
 - 查看镜像
 
 ```
-docker images
+docker images //查看全部镜像
+docker images ubuntu //查看所有版本的ubuntu镜像
 ```
 
 - 为本地镜像添加tag标签
@@ -141,6 +142,12 @@ docker login //先登录docker
 docker tag helloworld:1.0 ${user}/helloword:1.0 //为本地镜像打上带docker用户名的tag
 docker push sky623966322/helloword:1.0
 ```
+
+- 查看镜像制作历史
+
+  ```
+  docker history ubuntu:18.04
+  ```
 
 ### 7.docker 容器命令
 
@@ -378,4 +385,27 @@ docker push sky623966322/helloword:1.0
   ls /vol
   ```
 
+
+### docker端口映射与容器互联
+
+- 端口映射
+
+  ```
+  docker run -d -p 5000:5000 training/webapp python app.py //主机端口:容器端口
+  使用主机端口5000，映射到容器5000端口，以镜像training/webapp创建并启动容器，并且执行 python app.py 命令
+  ```
+
+- 容器互联
+
+  ```
+  docker run -d --name db training/postgres //创建并启动db容器
+  docker run -d -P --name web --link db:db training/webapp python app.py
   
+  -P 随机映射一个 49000~49900 的端口到内部容器开放的网络端口
+  --link 参数的格式为--link name: alias, 其中name是要链接的容器的名称 ，alias是别名
+  ```
+
+
+操作系统镜像
+
+- BusyBox 集成了100多个最常用的Linux命令，例如cat、echo、grep、telnet等工具。最大的特点是镜像不到2M。

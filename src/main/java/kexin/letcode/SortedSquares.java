@@ -19,7 +19,7 @@ public class SortedSquares {
             if (leftSquare > rigthSquare) { // 左边较大的时候，放到右边
                 result[pos] = leftSquare;
                 left ++;
-            } else { // 右边较，右边放到对应的位置，一样大的时候也只处理右边的即可
+            } else { // 右边较大，右边放大到对应的位置，一样大的时候也只处理右边的即可
                 result[pos] = rigthSquare;
                 rigth--;
             }
