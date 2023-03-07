@@ -9,6 +9,8 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 循环依赖
+ *
+ * https://www.zhihu.com/question/438247718
  */
 public class CircleTest {
 
