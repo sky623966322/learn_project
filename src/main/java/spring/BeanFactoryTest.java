@@ -2,7 +2,10 @@ package spring;
 
 import org.junit.Test;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
+import spring.bean.AutowireServiceA;
 import spring.bean.MyTestBean;
 import spring.bean.User;
 
@@ -20,6 +23,21 @@ public class BeanFactoryTest {
         System.out.println(bf.getBean("car"));
         //创建FactoryBean实例
         System.out.println(bf.getBean("&car"));
+        // 由alias创建bean实例
+        System.out.println(bf.getBean("myTestBean2"));
+    }
+
+    @Test
+    public void testCircularRef() {
+        XmlBeanFactory bf = new XmlBeanFactory(new ClassPathResource("circularRefTest.xml"));
+        System.out.println(bf.getBean("serviceA"));
+    }
+
+    @Test
+    public void testAutowire() {
+        ApplicationContext bf = new ClassPathXmlApplicationContext("autowireTest.xml");
+        AutowireServiceA autowireServiceA = (AutowireServiceA)bf.getBean("autowireServiceA");
+        autowireServiceA.testA();
     }
 
     @Test
