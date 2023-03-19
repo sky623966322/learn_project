@@ -7,5 +7,9 @@
        http://www.springframework.org/schema/aop
        http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-    <aop:aspectj-autoproxy proxy-target-class="true"/>
+    <aop:aspectj-autoproxy/>
+
+    <bean id="testBean" class="spring.ch07.TestBean"/>
+
+    <bean class="spring.ch07.AspectJTest"/>
 </beans>

@@ -8,6 +8,7 @@ import org.springframework.core.io.ClassPathResource;
 import spring.bean.AutowireServiceA;
 import spring.bean.MyTestBean;
 import spring.bean.User;
+import spring.ch07.TestBean;
 
 import static org.junit.Assert.assertEquals;
 
@@ -45,6 +46,13 @@ public class BeanFactoryTest {
         XmlBeanFactory bf = new XmlBeanFactory(new ClassPathResource("user.xml"));
         User zs = (User) bf.getBean("zs");
         System.out.println(zs.getUserName() + "->" + zs.getEmail());
+    }
+
+    @Test
+    public void testAspect(){
+        ApplicationContext bf = new ClassPathXmlApplicationContext("aspectTest.xml");
+        TestBean testBean = (TestBean) bf.getBean("testBean");
+        testBean.test();
     }
 
 }

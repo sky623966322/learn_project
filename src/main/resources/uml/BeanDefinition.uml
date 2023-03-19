@@ -11,15 +11,15 @@
   </nodes>
   <notes />
   <edges>
+    <edge source="org.springframework.beans.factory.support.AbstractBeanDefinition" target="org.springframework.beans.factory.config.BeanDefinition">
+      <point x="0.0" y="-27.0" />
+      <point x="0.0" y="27.0" />
+    </edge>
     <edge source="org.springframework.beans.factory.support.ChildBeanDefinition" target="org.springframework.beans.factory.support.AbstractBeanDefinition">
       <point x="0.0" y="-27.0" />
       <point x="581.5" y="183.0" />
       <point x="432.6666666666667" y="183.0" />
       <point x="79.66666666666669" y="27.0" />
-    </edge>
-    <edge source="org.springframework.beans.factory.support.AbstractBeanDefinition" target="org.springframework.beans.factory.config.BeanDefinition">
-      <point x="0.0" y="-27.0" />
-      <point x="0.0" y="27.0" />
     </edge>
     <edge source="org.springframework.beans.factory.support.GenericBeanDefinition" target="org.springframework.beans.factory.support.AbstractBeanDefinition">
       <point x="0.0" y="-27.0" />

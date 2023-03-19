@@ -6,8 +6,8 @@
     <node x="0.0" y="208.0">org.springframework.core.io.ContextResource</node>
     <node x="78.08333333333343" y="416.0">org.springframework.core.io.DefaultResourceLoader.ClassPathContextResource</node>
     <node x="1026.5" y="312.0">org.springframework.core.io.UrlResource</node>
-    <node x="577.5" y="312.0">org.springframework.core.io.InputStreamResource</node>
     <node x="90.5" y="0.0">org.springframework.core.io.InputStreamSource</node>
+    <node x="577.5" y="312.0">org.springframework.core.io.InputStreamResource</node>
     <node x="361.5" y="312.0">org.springframework.core.io.ClassPathResource</node>
     <node x="137.5" y="312.0">org.springframework.core.io.FileSystemResource</node>
     <node x="810.5" y="312.0">org.springframework.core.io.ByteArrayResource</node>
@@ -48,16 +48,26 @@
       <point x="227.83333333333334" y="183.0" />
       <point x="39.33333333333334" y="27.0" />
     </edge>
+    <edge source="org.springframework.core.io.DefaultResourceLoader.ClassPathContextResource" target="org.springframework.core.io.ContextResource">
+      <point x="-64.25" y="-27.0" />
+      <point x="142.33333333333343" y="391.0" />
+      <point x="89.0" y="391.0" />
+      <point x="0.0" y="27.0" />
+    </edge>
     <edge source="org.springframework.core.io.FileSystemResource" target="org.springframework.core.io.AbstractResource">
       <point x="51.0" y="-27.0" />
       <point x="290.5" y="282.0" />
       <point x="609.2" y="282.0" />
       <point x="-74.79999999999995" y="27.0" />
     </edge>
-    <edge source="org.springframework.core.io.DefaultResourceLoader.ClassPathContextResource" target="org.springframework.core.io.ContextResource">
-      <point x="-64.25" y="-27.0" />
-      <point x="142.33333333333343" y="391.0" />
-      <point x="89.0" y="391.0" />
+    <edge source="org.springframework.core.io.ByteArrayResource" target="org.springframework.core.io.AbstractResource">
+      <point x="0.0" y="-27.0" />
+      <point x="908.5" y="292.0" />
+      <point x="721.4000000000001" y="292.0" />
+      <point x="37.40000000000009" y="27.0" />
+    </edge>
+    <edge source="org.springframework.core.io.InputStreamResource" target="org.springframework.core.io.AbstractResource">
+      <point x="0.0" y="-27.0" />
       <point x="0.0" y="27.0" />
     </edge>
     <edge source="org.springframework.core.io.DefaultResourceLoader.ClassPathContextResource" target="org.springframework.core.io.ClassPathResource">
@@ -66,18 +76,8 @@
       <point x="459.5" y="391.0" />
       <point x="0.0" y="27.0" />
     </edge>
-    <edge source="org.springframework.core.io.InputStreamResource" target="org.springframework.core.io.AbstractResource">
-      <point x="0.0" y="-27.0" />
-      <point x="0.0" y="27.0" />
-    </edge>
-    <edge source="org.springframework.core.io.ByteArrayResource" target="org.springframework.core.io.AbstractResource">
-      <point x="0.0" y="-27.0" />
-      <point x="908.5" y="292.0" />
-      <point x="721.4000000000001" y="292.0" />
-      <point x="37.40000000000009" y="27.0" />
-    </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="0.858942065491184" x="585.4999999999999" y="235.0" />
+  <settings layout="Hierarchic Group" zoom="0.9000839630562553" x="585.5" y="235.0" />
   <SelectedNodes>
     <node>org.springframework.core.io.Resource</node>
   </SelectedNodes>
