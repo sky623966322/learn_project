@@ -16,6 +16,18 @@ public class ListNode {
         this.next = next;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(val);
+        ListNode cur = next;
+        while (cur != null ) {
+            sb.append(",").append(cur.val);
+            cur = cur.next;
+        }
+        return sb.toString();
+    }
+
     public static ListNode buildListNode(int[] intArr) {
         ListNode node = new ListNode(-1);
         ListNode cur = node;
