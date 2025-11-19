@@ -34,7 +34,7 @@ public class TableCreator {
         String tableName = dbTablename == null || dbTablename.length() < 1 ?
                 className.toUpperCase() : dbTablename;
 
-        Field[] fields = clazz.getDeclaredFields();//包含父类的Field
+        Field[] fields = clazz.getDeclaredFields();//不包含父类的Field
         if (fields.length == 0) return null;
 
         List<String> columnDefs = new ArrayList<>();

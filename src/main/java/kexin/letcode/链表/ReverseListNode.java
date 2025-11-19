@@ -52,13 +52,14 @@ public class ReverseListNode {
     }
 
     public static ListNode reverse(ListNode listNode) {
-        ListNode pre = null;
-        while (listNode != null) {
-            ListNode temp = listNode.next;
-            listNode.next = pre;
-            pre = listNode;
-            listNode = temp;
-        }
-        return pre;
+       ListNode pre = null;
+       ListNode cur = listNode;
+       while(cur != null) {
+           ListNode temp = cur.next;
+           cur.next = pre;
+           pre = cur;
+           cur = temp;
+       }
+       return pre;
     }
 }
