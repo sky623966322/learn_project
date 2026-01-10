@@ -4,7 +4,7 @@ public class ReverseListNode {
 
     public static void main(String[] args) {
         ListNode listNode = ListNode.buildListNode(new int[]{1, 2, 3, 4, 5});
-        ListNode reversed1 = reverse(listNode);
+        ListNode reversed1 = reverse2(listNode);
         // ListNode reversed = reverseBetween(listNode, 2, 4);
         System.out.println(reversed1);
     }
@@ -61,5 +61,17 @@ public class ReverseListNode {
            cur = temp;
        }
        return pre;
+    }
+
+    public static ListNode reverse2(ListNode head) {
+        if(head == null) {
+            return null;
+        }
+        ListNode node = reverse2(head.next);
+        if (node != null) {
+            return node.next;
+        } else {
+            return node;
+        }
     }
 }
